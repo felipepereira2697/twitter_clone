@@ -122,7 +122,8 @@ $erro = isset($_GET['erro']) ? $_GET['erro'] :	0;//isso aqui é um if ternário
 
 
 	    </div>
-	
+		
+		<!-- sempre deixar esse link aqui, depois de tudo, evitando bugs -->
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 	
 	</body>

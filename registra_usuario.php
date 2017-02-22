@@ -1,14 +1,15 @@
-
 <?php
 require_once('bd.class.php');
 //recuperamos os dados aqui
 //$_POST e $_GET são arrays associativos. no caso do post, esse array é populado com o NAME que vc deu para o campo no form
 //GET vai tudo pela URL, pode ser perigoso em determinados casos
-$usuario =  $_POST['usuario'];
-$email =  $_POST['email'];
+echo $_POST['usuario'];
+echo "<br>";
+echo $_POST['email'];
+echo "<br>";
 //criptografando para md5, poderiamos utilizar o SHA1 também
 //retorna um hash com 32 posições
-$senha = md5($_POST['senha']);
+echo $_POST['senha'];
 
 //instância da classe bd
 $objBd = new bd();

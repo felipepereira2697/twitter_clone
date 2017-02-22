@@ -55,7 +55,7 @@
 	    	<div class="col-md-4">
 	    		<h3>Inscreva-se já.</h3>
 	    		<br />
-				<form method="post" action="registra_usuario.php" id="formCadastrarse">
+				<form method="POST" action="registra_usuario.php" id="formCadastrarse">
 					<div class="form-group">
 						<input type="text" class="form-control" id="usuario" name="usuario" placeholder="Usuário" required="required">
 						<?php
@@ -68,7 +68,7 @@
 					</div>
 
 					<div class="form-group">
-						<input type="email" class="form-control" id="email" name="email" placeholder="Email" required="requiored">
+						<input type="email" class="form-control" id="email" name="email" placeholder="Email" required="required">
 						<?php
 							if($erro_email){
 								echo '<font style="color:#FF0000;">Email já cadastrado</font>';
