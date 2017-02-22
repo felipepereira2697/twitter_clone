@@ -12,7 +12,7 @@ $erro = isset($_GET['erro']) ? $_GET['erro'] :	0;//isso aqui é um if ternário
 		<title>Twitter clone</title>
 
 		<!-- jquery - link cdn -->
-		<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+		<script src="//cdn.jsdelivr.net/jquery/3.1.1/jquery.min.js"></script>
 
 		<!-- bootstrap - link cdn -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
