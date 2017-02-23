@@ -1,8 +1,12 @@
-<?php
-//essa variavel só vai existir se tivermos um erro de login
+<?php 
+//recuperar a variavel que está na url, via GET
+//um problema, se tirarmos a variavel da url, obteremos um Undefined index, podemos corrigir
+//checando se ele existe antes de atribui-lo a qualquer variavel
+	$erro = isset($_GET['erro']?$_GET['erro'] : 0);
+	//se tal coisa for true, então após o ? é executado algo, caso seja false, após o : é executada outra função
+	echo $erro;
 
-$erro = isset($_GET['erro']) ? $_GET['erro'] :	0;//isso aqui é um if ternário
-?>
+ ?>
 
 <!DOCTYPE HTML>
 <html lang="pt-br">

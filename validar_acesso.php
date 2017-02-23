@@ -28,7 +28,16 @@ if($resultado_id){
 	//retornando em forma de array
 	$dados_usuario = mysqli_fetch_array($resultado_id);
 	//var_dump($dados_usuario) retorna null caso não exista
-	var_dump($dados_usuario);
+	//checamos se dentro do retorno, existe um usuário
+	if(isset($dados_usuario['usuario'])){
+		echo "usuário existe";
+	}else{
+		//logo não há nada no banco de dados para ser retornado
+		//vamos forçar um redirecionamento para a página index
+		//quando queremos forçar o redirecionamento, podemos inclusive colocar parâmetros na url
+		//parametros que portanto podem ser recuperados via GET
+		header('Location: index.php?erro=1');
+	}
 	
 }else{
 	echo "<p>Erro na execução da consulta, por favor, entre em contato com o admin do site</p>";
