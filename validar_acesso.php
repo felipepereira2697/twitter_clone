@@ -1,6 +1,7 @@
 <?php
 //para autenticar usuario usando session, precisamos indicar para o php que estamos
 //trabalhando com sessao
+//session_start() algo do genero
 //geralmente é o primeiro comando da nossa app, nunca vem depois de uma saida de dados no navegador
 
 require_once 'db.class.php';

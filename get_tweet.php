@@ -21,7 +21,7 @@ $objBd->conecta_mysql();
 //date format função do sql 
 $sql =  " SELECT t.id_tweet, t.id_usuario, t.tweet, DATE_FORMAT(t.data_inclusao,'%d %b %Y %T') AS data_inclusao_formatada, u.usuario ";
 $sql .=" FROM tweet AS t JOIN usuarios AS u ON(t.id_usuario = u.id) ";
-$sql.= "WHERE id_usuario = '$id_usuario' "; 
+$sql .= "WHERE id_usuario = '$id_usuario' "; 
 $sql.= "OR id_usuario IN (SELECT seguindo_id_usuario FROM usuarios_seguidores WHERE id_usuario = $id_usuario)";
 $sql .=" ORDER BY data_inclusao DESC ";
 

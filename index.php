@@ -19,6 +19,7 @@
 		<!-- Não usei uma versão atual do jquery pois tinha problema de compatibilidade
 				com o bootstrap, provavelmente assim que a lib e o framework estiverem 
 				compativeis, atualizo aqui
+
 		 -->
 		<script
 		  src="https://code.jquery.com/jquery-2.2.4.min.js"
@@ -32,35 +33,34 @@
 		<link rel="stylesheet" type="text/css" href="customStyle.css">
 	
 		<script>
-			// verificando se os campos do form de entrada estão preenchidos
+			//código javascript, validação dos campos, só vamos enviar o formulário
+			//caso o preenchimento tenha ocorrido
+			//quando clicar no botão de entrar, manipularemos esse jquery aqui
 			$(document).ready(function(){
-				//verificar após o carregamento do documento se o botão de entrar foi clicado
-				//caso sim, então fazemos a verificação dos campos.
-				//o nosso clicar = entrar tem id = btn_login
+
+				//verificar se os campos de usuario e senha foram preenchidos 
 				$('#btn_login').click(function(){
-
-					var campo_vazio = false; //caso exista, marcamos true
-					if($('#campo_usuario').val()==''){
-						//se o campo estiver vazio, a borda ficará vermelha
-						$('#campo_usuario').css({'border-color': '#FF0000'});
-						campo_vazio = true;
-
-					}else{
-						//caso  o campo esteja preenchido, marca com o cinza
-						$('#campo_usuario').css({'border-color': '#ccc'});
-					}
-
-
-					if($('#campo_senha').val()==''){
-						$('#campo_senha').css({'border-color': '#FF0000'});
+					//caso um dos campos esteja vazio, o formulário não pode ser preenchido
+					var campo_vazio = false;
+					//checando se o campo usuário não é vazio
+					if($("#campo_usuario").val() == ''){
+						//mudar o visual do campo vazio, facilitando pro usuário
+						//passando um json
+						$('#campo_usuario').css({'border-color':'#A94442'});
 						campo_vazio = true;
 					}else{
-						$('#campo_senha').css({'border-color': '#ccc'});
+						//se o campo estiver preenchido, mudamos um pouco o css
+						$('#campo_usuario').css({'border-color':'#ccc'});
 					}
-
-					//ele não fará o envio do formulário aqui, pois o retorno é falso
+					//o mesmo vale para o campo senha
+					if($('#campo_senha').val() == ''){
+						$('#campo_senha').css({'border-color': '#A94442'});
+						campo_vazio = true;
+					}else{
+						$('#campo_senha').css({'border-color':'#ccc'});
+					}
+					//se for verdade que tem um campo vazio, impedimos que o formulário seja submetido
 					if(campo_vazio) return false;
-
 				});
 			});
 
@@ -93,8 +93,8 @@
 						<div class="col-md-12">
 				    		<p>Você possui uma conta?</h3>
 				    		<br />
-				    		<!-- enviar esse form ppara uma pagina php para que ele trate as infos recebidas -->
-				    		<!-- outra coisa legal no formulário é que caso não seja preenchido nenhum dados 
+				    		<!-- enviar esse form para uma pagina php para que ele trate as infos recebidas -->
+				    		<!-- outra coisa legal no formulário é que caso não seja preenchido nenhum dado
 							ao clicar em entrar ele valide, antes da submissaoo pro php, se os campos estão preenchidos
 							podemos fazer isso usar jquery
 				    		-->
@@ -130,7 +130,7 @@
 
 	    <div class="container">
 
-	      <!-- Main component for a primary marketing message or call to action -->
+	      <!--  -->
 	      <div class="jumbotron">
 	        <h1>Bem vindo ao twitter clone</h1>
 	        <p>Veja o que está acontecendo agora...</p>

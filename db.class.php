@@ -25,7 +25,7 @@ class db{
 		//verificar se houve erro na conexão com o bd
 		//se não for zero é pq deu erro
 		if(mysqli_connect_errno()){
-			echo "Houve um erro ao tentar se conectar com o banco de dados MySQL ".mysqli_connect_error();
+			echo "<p>Houve um erro ao tentar se conectar com o banco de dados MySQL</p> ".mysqli_connect_error();
 		}
 		//retorna o objeto de conexão
 		return $con;
