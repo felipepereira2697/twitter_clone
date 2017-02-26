@@ -4,6 +4,10 @@
 //session_start() algo do genero
 //geralmente é o primeiro comando da nossa app, nunca vem depois de uma saida de dados no navegador
 
+//esse comando indica ao script que ele terá acesso as variaveis de sessão, sempre colocamos no inicio do script
+//deve vir antes de qualquer echo/print var_dump, ou qualquer estrutura de output
+session_start();
+
 require_once 'db.class.php';
 
 
@@ -31,7 +35,17 @@ if($resultado_id){
 	//var_dump($dados_usuario) retorna null caso não exista
 	//checamos se dentro do retorno, existe um usuário
 	if(isset($dados_usuario['usuario'])){
-		echo "usuário existe";
+
+		//realizando trativas, evitando acesso direto à essa página com o recurso de session
+		//essa variavel session passa a receber a variavel do retorno dos dados do usuário.
+		//aqui nesse array dados usuário temos os valores retornados conforme o sql que passamos
+		//a partir do momento que atribuimos variaveis de sessão, ela passa a valer para toda
+		//a aplicação, vamos até a página home.php recuperar esses dados.
+		$_SESSION['usuario'] = $dados_usuario['usuario'];
+		$_SESSION['email'] = $dados_usuario['email'];
+
+		//ja que a validação ocorreu corretamente aqui, podemos redirecionar para uma pag restrita
+		header('Location: home.php');
 	}else{
 		//logo não há nada no banco de dados para ser retornado
 		//vamos forçar um redirecionamento para a página index
