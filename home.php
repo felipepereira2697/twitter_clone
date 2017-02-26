@@ -24,7 +24,20 @@
 
 		<!-- bootstrap - link cdn -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-	
+		<script type="text/javascript">
+			//usando jQuery
+			$(document).ready(function(){
+				//associar o evento de clique ao botão
+				$('#btn_tweet').click(function(){
+					//recuperando oq tem dentro do campo de texto
+					
+					//garantir que não tenha tweet vazio
+					if($('#texto_tweet').val().length > 0){
+						alert("Campo está preenchido");
+					}
+				});
+			});
+		</script>
 	</head>
 	<!-- Aula 265 faremos a inclusao de novos usuarios, criando um arquivo php que receberá os dados do formulario
 	criar uma classe de conexao com o bd, estabelecer a logica necessária para inserir os dados em uma tabela do bd
@@ -77,9 +90,10 @@
 	    		<div class="panel panel-default">
 	    			<div class="panel panel-body">
 	    				<div class="input-group">
-	    					<input type="text" class="form-control" placeholder="What is going on?" maxlength="140">
+	    				<!-- dando id's para facilitar a manipulação com o JS -->
+	    					<input type="text" id="texto_tweet" class="form-control" placeholder="What is going on?" maxlength="140">
 	    					<span class="input-group-btn">
-	    						<button class="btn btn-default" type="button">Tweet</button>
+	    						<button class="btn btn-default" id="btn_tweet" type="button">Tweet</button>
 	    					</span>
 	    				</div>
 	    			</div>
