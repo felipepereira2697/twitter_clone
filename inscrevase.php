@@ -2,8 +2,8 @@
 	
 	//devemos verificar se esses indices existem na url, de preferencia usando if ternário
 	//$erro_usuario = isset($_GET['erro_usuario']) ? <verdade>:<falso>;
-	$erro_usuario = isset($_GET['erro_usuario']) ? $_GET['erro_usuario']:0;
-	$erro_email = isset($_GET['erro_email'])? $_GET['erro_email']:0;
+	$erro_usuario = isset($_GET['erro_usuario']) ? $_GET['erro_usuario'] : 0;
+	$erro_email  = isset($_GET['erro_email']) ? $_GET['erro_email'] : 0;
 
 ?>
 <!DOCTYPE HTML>
@@ -11,7 +11,7 @@
 	<head>
 		<meta charset="UTF-8">
 
-		<title>Twitter clone</title>
+		<title>Inscreva-se</title>
 		
 		<!-- jquery - link cdn -->
 		<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
@@ -60,8 +60,8 @@
 						<input type="text" class="form-control" id="usuario" name="usuario" placeholder="Usuário" required="required">
 						<?php
 						//o php interpreta o valor 1 como true e 0 como sendo false, poderiamos fazer: $erro_usuario ==1 
-							if($erro_usuario){
-								echo '<font style="color:#FF0000;">Usuário já cadastrado</font>';
+							if($erro_usuario){ 
+								echo '<p><font style="color:#FF0000;">Usuário já cadastrado</font></p>';
 							}
 							
 						?>
@@ -71,7 +71,7 @@
 						<input type="email" class="form-control" id="email" name="email" placeholder="Email" required="required">
 						<?php
 							if($erro_email){
-								echo '<font style="color:#FF0000;">Email já cadastrado</font>';
+								echo '<p><font style="color:#FF0000;">Email já cadastrado</font></p>';
 							}
 						?>
 					</div>

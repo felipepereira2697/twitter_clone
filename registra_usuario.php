@@ -7,6 +7,8 @@ require_once 'db.class.php';
 //GET vai tudo pela URL, pode ser perigoso em determinados casos
 $usuario =  $_POST['usuario'];
 $email =  $_POST['email'];
+$usuario_existe = false;
+$email_existe = false;
 
 //criptografando para md5, poderiamos utilizar o SHA1 também
 //retorna um hash com 32 posições
@@ -22,9 +24,7 @@ $sql = "SELECT * FROM usuarios WHERE usuario = '$usuario'";
 if($resultado_id = mysqli_query($link,$sql)){
 	$dados_usuario  = mysqli_fetch_array($resultado_id);
 	if($dados_usuario['usuario']){
-		echo "<p>lamento, usuário já cadastrado</p>";
-	}else{
-		echo "<p>OBA!! Usuário não cadastrado</p>";
+		$usuario_existe = true;
 	}
 
 }else{
@@ -38,15 +38,27 @@ $sql = "SELECT * FROM usuarios WHERE email = '$email'";
 if($resultado_id = mysqli_query($link,$sql)){
 	$dados_usuario = mysqli_fetch_array($resultado_id);
 	if($dados_usuario['email']){
-		echo "<p>Lamento, email já está sendo usado</p>";
-	}else{
-		echo "<p>Email OK!</p>";
+		$email_existe = true;
 	}
 }else{
 	echo "<p>Erro ao tentar localizar o registro de email</p>";
 }
 
-die();
+//se um dos dois ja existir forçaremos ele a voltar para inscrição
+if($usuario_existe || $email_existe){
+	$retorno_get = null;
+
+	if($usuario_existe){
+		$retorno_get.= "erro_usuario=1&";
+	}
+	if($email_existe){
+		$retorno_get .= "erro_email=1&";
+	}
+	header('Location: inscrevase.php?'.$retorno_get);
+	//nao deixando continuar a aplicação, o die mata aqui
+	die()
+}
+
 //aspas duplas antes de ser atribuido o valor a variavel, ela checa se dentro da 
 //string possuí alguma variavel, se sim ela converte o valor da variavel para onde a variavel faz referencia
 //inserindo usuários no bd
