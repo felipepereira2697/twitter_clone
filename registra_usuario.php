@@ -1,4 +1,5 @@
 <?php
+echo '<link rel="stylesheet" type="text/css" href="customStyle.css">';
 //fazer a inclusão do arquivo que realiza a conexão com o banco de dados
 require_once 'db.class.php';
 //recuperamos os dados aqui
@@ -16,6 +17,36 @@ $objDb = new db();
 //retorna um link de conexão
 //recebe o retorno da conexão mysql
 $link = $objDb->conecta_mysql();
+//verificar se o usuário existe no bd
+$sql = "SELECT * FROM usuarios WHERE usuario = '$usuario'";
+if($resultado_id = mysqli_query($link,$sql)){
+	$dados_usuario  = mysqli_fetch_array($resultado_id);
+	if($dados_usuario['usuario']){
+		echo "<p>lamento, usuário já cadastrado</p>";
+	}else{
+		echo "<p>OBA!! Usuário não cadastrado</p>";
+	}
+
+}else{
+	echo "<p>Erro ao tentar localizar o registro de usuário</p>";
+}
+
+
+//verificar se o email existe
+
+$sql = "SELECT * FROM usuarios WHERE email = '$email'";
+if($resultado_id = mysqli_query($link,$sql)){
+	$dados_usuario = mysqli_fetch_array($resultado_id);
+	if($dados_usuario['email']){
+		echo "<p>Lamento, email já está sendo usado</p>";
+	}else{
+		echo "<p>Email OK!</p>";
+	}
+}else{
+	echo "<p>Erro ao tentar localizar o registro de email</p>";
+}
+
+die();
 //aspas duplas antes de ser atribuido o valor a variavel, ela checa se dentro da 
 //string possuí alguma variavel, se sim ela converte o valor da variavel para onde a variavel faz referencia
 //inserindo usuários no bd
