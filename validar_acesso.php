@@ -14,7 +14,7 @@ require_once 'db.class.php';
 //receber as infos através do post
 $usuario = $_POST['usuario'];
 //criptografando aqui também para não ocorrer problema de comparação de hash
-$senha = $_POST['senha'];
+$senha = md5($_POST['senha']);
 
 //checar se ja possuimos o registro passado no bd
 $sql = "SELECT * FROM usuarios WHERE usuario = '$usuario' AND senha = '$senha' ";

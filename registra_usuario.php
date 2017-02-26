@@ -9,7 +9,7 @@ $email =  $_POST['email'];
 
 //criptografando para md5, poderiamos utilizar o SHA1 também
 //retorna um hash com 32 posições
-$senha =  $_POST['senha'];
+$senha =  md5($_POST['senha']);
 
 //instância da classe db
 $objDb = new db();
