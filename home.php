@@ -54,23 +54,44 @@
 
 
 	    <div class="container">
-	    	
-	    	<br /><br />
-
-	    	<div class="col-md-4"></div>
-	    	<div class="col-md-4">
-	    		<h3>Usuário autenticado</h3>
-
-	    		<p>Usuário:  <?= $_SESSION['usuario']?> </p>
-	    		<p>Email: <?= $_SESSION['email'] ?> </p>
+	    	<div class="col-md-3">
+	    		<!-- Coluna esquerda, onde ficará nome e seguidos e seguidores -->
+	    		<div class="panel panel-default">
+	    			<div class="panel panel-body">
+	    				<h4><?= $_SESSION['usuario']?></h4>
+	    				<hr>
+	    				<!--dentro do panel body, vamos dividir em duas colunas -->
+	    				<div class="col-md-6">
+	    					<p>Tweets</p>
+	    					<p>1</p>
+	    				</div>		
+	    				<div class="col-md-6">
+	    					<p>Seguidores</p>
+	    					<p>1</p>
+	    				</div>
+	    			</div>
+	    		</div>
 	    	</div>
-			<div class="col-md-4"></div>
-
-			<div class="clearfix"></div>
-			<br />
-			<div class="col-md-4"></div>
-			<div class="col-md-4"></div>
-			<div class="col-md-4"></div>
+	    	<div class="col-md-6">
+	    		<!--Aqui é onde ficaram os tweets -->
+	    		<div class="panel panel-default">
+	    			<div class="panel panel-body">
+	    				<div class="input-group">
+	    					<input type="text" class="form-control" placeholder="What is going on?" maxlength="140">
+	    					<span class="input-group-btn">
+	    						<button class="btn btn-default" type="button">Tweet</button>
+	    					</span>
+	    				</div>
+	    			</div>
+	    		</div>
+	    	</div>
+			<div class="col-md-3">
+				<div class="panel panel-default">
+					<div class="panel panel-body">
+						<h4><a href="#">Procurar pessoas</a></h4>
+					</div>
+				</div>
+			</div>
 
 		</div>
 
