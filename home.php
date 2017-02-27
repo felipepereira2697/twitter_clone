@@ -139,7 +139,7 @@
 			<div class="col-md-3">
 				<div class="panel panel-default">
 					<div class="panel panel-body">
-						<h4><a href="#">Procurar pessoas</a></h4>
+						<h4><a href="procurar_pessoas.php">Procurar pessoas</a></h4>
 					</div>
 				</div>
 			</div>
