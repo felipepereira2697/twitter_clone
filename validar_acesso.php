@@ -41,6 +41,7 @@ if($resultado_id){
 		//aqui nesse array dados usuário temos os valores retornados conforme o sql que passamos
 		//a partir do momento que atribuimos variaveis de sessão, ela passa a valer para toda
 		//a aplicação, vamos até a página home.php recuperar esses dados.
+		$_SESSION['id_usuario'] = $dados_usuario['id'];
 		$_SESSION['usuario'] = $dados_usuario['usuario'];
 		$_SESSION['email'] = $dados_usuario['email'];
 

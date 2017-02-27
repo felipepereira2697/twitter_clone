@@ -45,10 +45,12 @@
 							//a função serialize com base no form retorna um json que pode ser atribuido
 							//a funçâo data, facilita muito quando queremos encaminhar os dados de um form
 							//que é muito grande
-							data: {texto_tweet: $('#form_tweet').serialize()},
+							data: $('#form_tweet').serialize(),
 							//caso haja sucesso, oq devemos fazer é recuperar o text
 							success: function(data){
-								alert(data);
+								//limpar o campo de tweet
+								$('#texto_tweet').val('');
+								alert('Tweet incluído com sucesso');
 							}
 						});
 					}
