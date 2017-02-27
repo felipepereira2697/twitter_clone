@@ -33,7 +33,24 @@
 					
 					//garantir que não tenha tweet vazio
 					if($('#texto_tweet').val().length > 0){
-						alert("Campo está preenchido");
+						//requisição ajax para envio de alguma coisa, podemos usar para formulários por exemplo
+						$.ajax({
+							//o ajax espera parametros json
+							//queremos encaminhar o que vamos escrever no tweet para a pagina inclui_tweet.php
+							//para onde vamos enviar
+							url:'inclui_tweet.php',
+							method:'post',
+							//criamos um json contendo a chave e o valor contido no campo texto_tweet
+							//quais serão as informções enviadas para o script
+							//a função serialize com base no form retorna um json que pode ser atribuido
+							//a funçâo data, facilita muito quando queremos encaminhar os dados de um form
+							//que é muito grande
+							data: {texto_tweet: $('#form_tweet').serialize()},
+							//caso haja sucesso, oq devemos fazer é recuperar o text
+							success: function(data){
+								alert(data);
+							}
+						});
 					}
 				});
 			});
@@ -89,13 +106,14 @@
 	    		<!--Aqui é onde ficaram os tweets -->
 	    		<div class="panel panel-default">
 	    			<div class="panel panel-body">
-	    				<div class="input-group">
+	    				<form id="form_tweet" class="input-group">
 	    				<!-- dando id's para facilitar a manipulação com o JS -->
-	    					<input type="text" id="texto_tweet" class="form-control" placeholder="What is going on?" maxlength="140">
+	    				<!-- a função serialize() precisa que o elemento tenha um name pra usá-lo como chave do json -->
+	    					<input type="text" id="texto_tweet"  name="texto_tweet" class="form-control" placeholder="What is going on?" maxlength="140">
 	    					<span class="input-group-btn">
 	    						<button class="btn btn-default" id="btn_tweet" type="button">Tweet</button>
 	    					</span>
-	    				</div>
+	    				</form>
 	    			</div>
 	    		</div>
 	    	</div>
