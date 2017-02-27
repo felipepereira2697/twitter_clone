@@ -50,7 +50,9 @@
 							success: function(data){
 								//limpar o campo de tweet
 								$('#texto_tweet').val('');
-								alert('Tweet incluído com sucesso');
+								//no sucesso da inclusão do tweet, de forma assincrona ele realiza a inserção
+								//do tweet na timeline
+								atualizaTweet();
 							}
 						});
 					}
