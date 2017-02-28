@@ -27,6 +27,15 @@ if($resultado_id){
 		//vale lembrar que a div que conterá os tweets, possuí a class list-group
 		echo '<a href="#" class="list-group-item"> ';
 			echo '<strong>'.$registro['usuario'].'</strong> <small>'.$registro['email'].'</small>';
+			echo '<p class="list-group-item-text pull-right">';
+				//para pegar o id de quem queremos seguir, vamos utilizar umm atributo customizável
+				//para manipular com JS
+				//para que cada um dos botões tenha esse atributo data-id_usuario com o id_usuario do banco de dados
+				echo '<button type="button" id="btn_seguir_'.$registro['id'].'" class="btn btn-primary btn_seguir" data-id_usuario="'.$registro['id'].'">Seguir</button>';
+				echo '<button type="button" id="btn_deixar_seguir_'.$registro['id'].'" style="display:none;" class="btn btn-danger btn_deixar_seguir" data-id_usuario="'.$registro['id'].'">Deixar de seguir</button>';
+			echo '</p>';
+			//quando usamos o pull right o elemento perde a noção do espaçamento, para isso usaremos o clearfix
+			echo '<div class="clearfix"></div>';
 		echo '</a>';
 	}
 }else{

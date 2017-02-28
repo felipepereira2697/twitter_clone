@@ -18,7 +18,7 @@
 	<head>
 		<meta charset="UTF-8">
 
-		<title>Home</title>
+		<title>Procurar pessoas</title>
 		
 		<!-- jquery - link cdn -->
 		<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
@@ -51,6 +51,44 @@
 							success: function(data){
 								
 								$('#pessoas').html(data);
+
+								$('.btn_seguir').click(function(){
+									//capturar o atributo relativo ao botão clicado
+									//passando o this o proprio elemento clicado
+									//a função data espera um parametro, exatamente nosso atributo customizado
+									//onde data- é o préfixo logo não é necessário passa lo
+									var id_usuario = $(this).data('id_usuario');
+
+
+									//varia de acordo com o id do usuário
+									$('#btn_seguir_'+id_usuario).hide();
+									$('#btn_deixar_seguir_'+id_usuario).show();
+									//agora vamos usar o ajax para fazer a requisição de um script para nós
+									$.ajax({
+										url:'seguir.php',
+										method: 'post',
+										data:{seguir_id_usuario : id_usuario},
+										success: function(data){
+											alert('Registro efetuado com sucesso');
+										}
+									});
+								}); 
+								$('.btn_deixar_seguir').click(function(){
+									var id_usuario = $(this).data('id_usuario');
+
+									//varia de acordo com o id do usuário
+									$('#btn_deixar_seguir_'+id_usuario).hide();
+									$('#btn_seguir_'+id_usuario).show();
+
+									$.ajax({
+										url: 'deixar_seguir.php',
+										method: 'post',
+										data:{deixar_seguir_id_usuario : id_usuario},
+										success: function(data){
+											alert('Registro removido com sucesso');	
+										}
+									});
+								});
 							}
 						});
 					}
