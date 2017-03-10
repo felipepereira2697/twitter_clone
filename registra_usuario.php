@@ -1,5 +1,5 @@
 <?php
-echo '<link rel="stylesheet" type="text/css" href="customStyle.css">';
+echo '<link rel="stylesheet" type="text/css" href="css/customStyle.css">';
 //fazer a inclusão do arquivo que realiza a conexão com o banco de dados
 require_once 'db.class.php';
 //recuperamos os dados aqui

@@ -5,7 +5,6 @@ class db{
 	//host, endereço de onde o banco de dados está instalado
 	//usamos o localhost pois a instância do mysql está no mesmo local que o servidor apache
 	private $host = 'localhost';
-	//usuario
 	//usuario padrão de instalação do MySQL
 	private $usuario = 'root'; 
 	//senha
